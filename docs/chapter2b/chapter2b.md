@@ -6,6 +6,31 @@ Our goal in this chapter is to describe the reinforcement learning problem in a 
 
 This chapter is based primarily on [Sutton & Barto (2018)](https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf). Portions of the exposition follow the original text closely, with some material omitted for brevity. Additional explanations and derivations have been included where clarity was needed.
 
+## Prerequisites
+
+To follow this chapter, you should be familiar with core concepts from probability theory:
+
+- **Probability distributions**
+  - Probability mass functions (PMFs)
+  - Probability density functions (PDFs)
+
+- **Conditional probability**
+
+- **Expectation**
+  - Expected value
+  - Conditional expectation
+
+- **Key probability rules**
+  - Chain rule of probability
+  - Marginalization
+
+For intuitive and well-structured explanations of these topics, the following resources are recommended:
+
+- [3Blue1Brown](https://www.youtube.com/@3blue1brown)
+- [Josh Starmer](https://www.youtube.com/@statquest)
+
+Their video series provide clear visual and conceptual foundations that are sufficient for the material covered here.
+
 # The Markov Property
 
 In the reinforcement learning framework, the agent makes its decisions as a function of a signal from the environment called the environment’s state. In this section we discuss what is required of the state signal, and what kind of information we should and should not expect it to provide. In particular, we formally define a property of environments and their state signals that is of particular interest, called the Markov property.
