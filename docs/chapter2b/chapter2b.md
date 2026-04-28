@@ -51,7 +51,7 @@ Formally, the Markov property is defined as:
 
 $$
 \begin{aligned}
-P(S_{t+1}, R_{t+1} \mid S_t, A_t, S_{t-1}, A_{t-1}, \dots, S_0, A_0)=P(S_{t+1}, R_{t+1} \mid S_t, A_t) 
+P(S_{t+1}, R_{t+1} \mid S_t, A_t, S_{t-1}, A_{t-1}, \dots, S_0, A_0)=P(S_{t+1}, R_{t+1} \mid S_t, A_t)
 \end{aligned}\tag{1}
 $$
 
@@ -96,7 +96,7 @@ From 2nd to the 3rd line, we obtain the expression by marginalizing over $s'$, u
 
 $$
 \begin{aligned}
-p(r \mid s,a) = \sum_{s'} p(s', r \mid s,a).    
+p(r \mid s,a) = \sum_{s'} p(s', r \mid s,a).
 \end{aligned} \tag{4}
 $$
 
@@ -127,7 +127,7 @@ From 2nd to the 3rd line, we use conditional probability (Bayes rule):
 
 $$
 \begin{aligned}
-p(r \mid s,a,s') = \frac{p(s', r \mid s,a)}{p(s' \mid s,a)}. 
+p(r \mid s,a,s') = \frac{p(s', r \mid s,a)}{p(s' \mid s,a)}.
 \end{aligned}\tag{7}
 $$
 
@@ -177,7 +177,7 @@ $$
 
 We call $q_\pi$ the action-value function for policy $\pi$.
 
-A fundamental property of value functions used throughout reinforcement learning and dynamic programming is that they satisfy particular recursive relationships. For any policy $\pi$ and any state $s$, the following consistency condition holds between the value of $s$ and the value of its possible successor states (full derivation in section [[#Bellman Equation Derivation]]: ^eq-bellman
+A fundamental property of value functions used throughout reinforcement learning and dynamic programming is that they satisfy particular recursive relationships. For any policy $\pi$ and any state $s$, the following consistency condition holds between the value of $s$ and the value of its possible successor states (full derivation in **Section: Bellman Equation Derivation**):
 
 $$
 \begin{aligned}
@@ -208,7 +208,7 @@ _Figure 3b_ shows $v_\pi$ for the equiprobable random policy with $\gamma = 0.9$
 
 ## Bellman Equation Derivation
 
-This is a longer derivation than those presented earlier in the chapter. It is included for completeness and may be skipped on first reading if the goal is only to understand the final form of the value function. The derivation is adapted from \cite{BellmanSE}.
+This is a longer derivation than those presented earlier in the chapter. It is included for completeness and may be skipped on first reading if the goal is only to understand the final form of the value function. The derivation is adapted from [Bellman Derivation](https://stats.stackexchange.com/questions/243384/deriving-bellmans-equation-in-reinforcement-learning).
 
 $$
 \begin{aligned}
@@ -242,7 +242,7 @@ This $p(r \mid s)$ is a marginal of a distribution that also contains variables 
 
 $$
 \begin{aligned}
-p(r \mid s) = \sum_{s' \in \mathcal{S}} \sum_{a \in \mathcal{A}} p(s', a, r \mid s) 
+p(r \mid s) = \sum_{s' \in \mathcal{S}} \sum_{a \in \mathcal{A}} p(s', a, r \mid s)
 \end{aligned}\tag{14}
 $$
 
@@ -250,7 +250,7 @@ Using the chain rule of probability:
 
 $$
 \begin{aligned}
-p(s', r, a \mid s) = p(s', r \mid a, s)\, p(a \mid s) = p(s', r \mid a, s)\, \pi(a \mid s) 
+p(s', r, a \mid s) = p(s', r \mid a, s)\, p(a \mid s) = p(s', r \mid a, s)\, \pi(a \mid s)
 \end{aligned}\tag{15}
 $$
 
@@ -258,7 +258,7 @@ We can rewrite $(1)$ using $(2)$ and $(3)$ to:
 
 $$
 \begin{aligned}
-\mathbb{E}_\pi[R_{t+1} \mid S_t = s] = \sum_{r \in \mathcal{R}} \sum_{s' \in \mathcal{S}} \sum_{a \in \mathcal{A}} r \, \pi(a \mid s) \, p(s', r \mid a, s) 
+\mathbb{E}_\pi[R_{t+1} \mid S_t = s] = \sum_{r \in \mathcal{R}} \sum_{s' \in \mathcal{S}} \sum_{a \in \mathcal{A}} r \, \pi(a \mid s) \, p(s', r \mid a, s)
 \end{aligned}\tag{16}
 $$
 
@@ -323,7 +323,7 @@ Optimal policies also share the same optimal action-value function, denoted $q^{
 
 $$
 \begin{aligned}
-q^{\*}(s, a) = \max_{\pi} q_\pi(s, a) 
+q^{\*}(s, a) = \max_{\pi} q_\pi(s, a)
 \end{aligned}\tag{22}
 $$
 
@@ -354,7 +354,7 @@ $$
 \begin{align}
 q^{\*}(s, a)
 &= \mathbb{E}\left[ R_{t+1} + \gamma \max_{a'} q^{\*}(S_{t+1}, a') \mid S_t = s, A_t = a \right] \notag \\
-&= \sum_{s', r} p(s', r \mid s, a)\, \left[ r + \gamma \max_{a'} q^{\*}(s', a') \right] 
+&= \sum_{s', r} p(s', r \mid s, a)\, \left[ r + \gamma \max_{a'} q^{\*}(s', a') \right]
 \end{align}\tag{25}
 $$
 
@@ -385,3 +385,15 @@ Even if the agent has a complete and accurate environment model, the agent is ty
 could possibly be entries in a table, and approximations must be made.
 
 A well-defined notion of optimality organizes the approach to learning we describe in this book and provides a way to understand the theoretical properties of various learning algorithms, but it is an ideal that reinforcement learning agents can only approximate to varying degrees. In reinforcement learning we are very much concerned with cases in which optimal solutions cannot be found but must be approximated in some way.
+
+# References
+
+- [Sutton & Barto (2018)](https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf)
+
+- [Thomas, G. (2020) – Model-based Reinforcement Learning Survey](https://arxiv.org/abs/2006.16712)
+
+- [Bellman Derivation](https://stats.stackexchange.com/questions/243384/deriving-bellmans-equation-in-reinforcement-learning)
+- [Bellman Derivation Medium](https://medium.com/@Bwhiz/deriving-the-bellman-equation-for-the-value-function-594be80bfeb4)
+- [3Blue1Brown](https://www.youtube.com/@3blue1brown)
+- [Josh Starmer](https://www.youtube.com/@statquest)
+- [CMU Lecture Notes (Gormley) – Reinforcement Learning / MDPs](https://www.cs.cmu.edu/~mgormley/courses/10601-s17/slides/lecture26-ri.pdf)
